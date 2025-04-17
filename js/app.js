@@ -69,16 +69,16 @@ function init() {
 
 // Set up a proper initial view of the terrain
 function setupInitialView() {
-  // Fly to Grand Canyon (good for showing terrain features)
+  // Fly to South Africa with a zoomed out view to see the whole country
   viewer.camera.flyTo({
     destination: Cesium.Cartesian3.fromDegrees(
-      -112.8, // longitude (Grand Canyon)
-      36.0, // latitude
-      25000 // height in meters
+      24.0, // longitude (center of South Africa)
+      -33.0, // latitude
+      2000000 // height in meters (much higher to see the whole country)
     ),
     orientation: {
       heading: Cesium.Math.toRadians(0),
-      pitch: Cesium.Math.toRadians(-45), // Look down at terrain
+      pitch: Cesium.Math.toRadians(-80), // Look down at terrain
       roll: 0.0,
     },
   });

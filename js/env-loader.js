@@ -8,9 +8,11 @@
     try {
       const response = await fetch("/.env");
       if (!response.ok) {
-        console.warn("Could not load .env file");
-        // Return empty object instead of hardcoded fallbacks
-        return {};
+        console.warn("Could not load .env file, using fallback values");
+        // Return a default token for local development with Live Server
+        return {
+          CESIUM_ION_TOKEN: "",
+        };
       }
 
       const text = await response.text();
@@ -33,9 +35,13 @@
 
       return variables;
     } catch (error) {
-      console.error("Error loading environment variables");
-      // Don't log the actual error as it might contain sensitive info
-      return {};
+      console.error(
+        "Error loading environment variables, using fallback values"
+      );
+      // Return a default token for local development with Live Server
+      return {
+        CESIUM_ION_TOKEN: "",
+      };
     }
   }
 
