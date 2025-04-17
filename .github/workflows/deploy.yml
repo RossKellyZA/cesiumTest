@@ -1,0 +1,38 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Create .env file
+        run: |
+          echo "CESIUM_ION_TOKEN=${{ secrets.CESIUM_ION_TOKEN }}" > .env
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # The folder to deploy (update this if your build outputs to a different directory)
+          branch: gh-pages
+          token: ${{ secrets.GITHUB_TOKEN }}

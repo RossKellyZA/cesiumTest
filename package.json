@@ -1,0 +1,32 @@
+{
+  "name": "wind-turbines-visualization",
+  "version": "1.0.0",
+  "description": "A 3D visualization of wind turbines using Cesium.js and Three.js with WebXR support",
+  "main": "js/app.js",
+  "scripts": {
+    "start": "npx http-server -c-1 -p 8080",
+    "build": "mkdir -p dist && cp -r index.html styles.css js node_modules/cesium/Build/Cesium node_modules/three/build/three.min.js dist/",
+    "lint": "eslint js/*.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "keywords": [
+    "wind",
+    "turbines",
+    "cesium",
+    "threejs",
+    "webxr",
+    "vr"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cesium": "^1.111.0",
+    "three": "^0.151.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "gh-pages": "^5.0.0",
+    "http-server": "^14.1.1"
+  }
+}

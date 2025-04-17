@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wind Turbines Visualization</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Cesium CSS -->
+    <link
+      href="node_modules/cesium/Build/Cesium/Widgets/widgets.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="cesiumContainer"></div>
+    <div id="toolbar">
+      <button id="vrButton" disabled>Enter VR</button>
+    </div>
+
+    <!-- Load environment variables first -->
+    <script src="js/env-loader.js"></script>
+
+    <!-- Cesium JavaScript -->
+    <script src="node_modules/cesium/Build/Cesium/Cesium.js"></script>
+
+    <!-- Load app.js as a module (it will import three.js as an ES module) -->
+    <script src="js/app.js" type="module"></script>
+  </body>
+</html>
